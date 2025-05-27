@@ -1,0 +1,120 @@
+body {
+  font-family: sans-serif;
+  
+  margin: 0px;
+  padding: 0px;
+  background: #d368e9;
+  display: flex;
+   
+}
+
+h1 {
+  text-align: center;
+  color: white;
+}
+
+.produto {
+  background: white;
+  margin: 10px 0;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+input, button {
+  display: block;
+  width: 100%;
+  margin: 0.5em 0;
+  padding: 0.5em;
+}
+
+/* Painel do ADM */
+.navBar{
+  
+  display: flex;
+
+}
+
+.navBar h1{
+  position: fixed;
+  left: 50%;
+  z-index: 1000;
+}
+
+#logoNav{
+  height: 100px;
+  position: fixed;
+   top: 10px;
+  left: 40px;
+  z-index: 1000; /* Garante que a navbar esteja acima de outros elementos */
+}
+
+.addProduto{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color:  #fd5d9a;
+  padding: 50px;
+  color: white;
+  border: 3px #51a3f0 solid;
+  border-radius: 25px;
+}
+
+.addProduto input{
+  background-color: transparent;
+  border: 2px #f0f0f0 solid;
+  border-radius: 25px;
+}
+.addProduto textarea{
+  background-color: transparent;
+  border: 2px #f0f0f0 solid;
+  border-radius: 10px;
+}
+.addProduto button{
+  background-color: #51a3f0;
+  border: none;
+  border-radius: 25px;
+  color: white;
+}
+
+.addProduto button:hover{
+  background-color: #2a5781;
+  transition: 1s;
+
+}
+
+/* Tela de Produtos */
+
+#produtos {
+  position: relative;
+  top: 150px;
+  
+   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  box-sizing: border-box; /* evita estouro */
+}
+
+.card{
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover; /* Mantém a proporção e corta se necessário */
+}
+@media (max-width: 400px) {
+  .card img {
+    height: 160px;
+  }
+}

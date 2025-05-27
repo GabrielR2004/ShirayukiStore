@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navBar">
+    
+    <a href="index.html"><img src="imagens/logo.png" alt="Logo" id="logoNav"></a>
+  </nav>
+
+  <div class="addProduto">
+    <h1>Adicionar Produto</h1>
+  <form id="productForm" class="form">
+  <input type="text" id="productName" placeholder="Nome do Produto" required>
+  <input type="number" id="productPrice" placeholder="Preço" required>
+  <input type="url" id="productImage" placeholder="URL da Imagem" required>
+  <textarea id="productDescription" placeholder="Descrição do produto" rows="3" required></textarea>
+  <button type="submit">Adicionar Produto</button>
+</form>
+  </div>
+  
+
+
+  <script>
+    document.getElementById('productForm').addEventListener('submit', async e => {
+  e.preventDefault();
+
+  const name = document.getElementById('productName').value;
+  const price = document.getElementById('productPrice').value;
+  const imageurl = document.getElementById('productImage').value;
+  const description = document.getElementById('productDescription').value;
+
+  const token = localStorage.getItem('token');
+
+  const res = await fetch('http://localhost:3000/produtos', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },
+    body: JSON.stringify({name, price, imageurl, description})
+  });
+
+  if (res.ok) {
+    alert('Produto adicionado!');
+  } else {
+    alert('Erro ao adicionar produto!');
+  }
+});
+
+  </script>
+</body>
+</html>
